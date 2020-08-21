@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
+import random
 import sys
 import math
 import time
@@ -16,6 +17,7 @@ if __name__ == '__main__':
     list_x = []
     list_y = []
     t = 0
+    ph_ini = 0
 
     # plot
     fig = plt.figure()
@@ -29,9 +31,9 @@ if __name__ == '__main__':
 
     while True:
         x = t
-        y = math.sin(x)
+        y = math.sin(x  + ph_ini )
 
-        print(x, y)
+        # print(x, y)
 
         list_x.append(x)
         list_y.append(y)
@@ -49,9 +51,11 @@ if __name__ == '__main__':
             # reset
             dt = datetime.datetime.now()
             dt = dt.strftime('%M%S')
-            dt = (int(dt) % 10) / 10
-            t = dt
+            dt = (int(dt) % 100) / 10
+            ph_ini = random.gauss(mu=0, sigma=0.3)
+            print(ph_ini)
 
+            t = 0
             list_x.clear
             list_y.clear
             time.sleep(0.5)
